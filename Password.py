@@ -13,7 +13,7 @@ passwordLength = int(input("What length would you like your password to be?"))
 def generate_strong_password ():
     password = ""
     for i in range(passwordLength):
-        password = password + random_character
+        password = password + random_character()
     print(password)
 
 generate_strong_password()
@@ -23,4 +23,16 @@ def fetch_word():
     word = response.json()[0]
     return word
 
-print(fetch_word())
+def replaceLetters():
+    word = word[0].upper() + word[1:]
+
+    if "a" in word:
+        word = word.replace("a", "@")
+
+def generate_weaker_password():
+    word1 = fetch_word()
+    word2 = fetch_word()
+    password = word1 + word2
+    return password
+
+print(generate_weaker_password())
